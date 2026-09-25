@@ -9,6 +9,7 @@ import {
   Users,
 } from "lucide-react";
 import { Header, Footer } from "@/components/site/Header";
+import { ContactForm } from "@/components/site/ContactForm";
 import heroImage from "@/assets/hero-parts.jpg";
 
 const LEISTUNGEN = [
@@ -350,80 +351,7 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-              <form
-                className="rounded-xl bg-card p-6 shadow-lg sm:p-8"
-                action="mailto:info@ahi-tec.de"
-                method="post"
-                encType="text/plain"
-              >
-                <div className="grid gap-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-1 block text-sm font-medium text-foreground"
-                    >
-                      Name / Firma
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Ihr Name oder Firmenname"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-1 block text-sm font-medium text-foreground"
-                    >
-                      E-Mail
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="ihre.adresse@firma.de"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-1 block text-sm font-medium text-foreground"
-                    >
-                      Ihre Anfrage
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      required
-                      placeholder="Beschreiben Sie kurz Ihr Vorhaben, Stückzahlen oder Anforderungen..."
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="rounded-md bg-signal px-6 py-3 text-sm font-semibold text-accent-foreground shadow transition-opacity hover:opacity-90 cursor-pointer"
-                  >
-                    Anfrage senden
-                  </button>
-                  <p className="text-xs text-muted-foreground">
-                    Hinweis: Sie können uns Ihre Anfrage auch direkt an{" "}
-                    <a href="mailto:info@ahi-tec.de" className="underline text-foreground">
-                      info@ahi-tec.de
-                    </a>{" "}
-                    oder telefonisch unter{" "}
-                    <a href="tel:+4923549429870" className="underline text-foreground">
-                      +49 2354 9429870
-                    </a>{" "}
-                    senden.
-                  </p>
-                </div>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>
