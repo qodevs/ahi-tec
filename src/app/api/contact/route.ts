@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const dynamic = "force-dynamic";
+export const maxDuration = 30;
+
 function escapeHtml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
@@ -50,10 +53,7 @@ export async function POST(req: Request) {
 
     // SMTP Configuration
     const smtpHost = process.env.SMTP_HOST || "smtp.ionos.de";
-    const smtpPort = parseInt(process.env.SMTP_PORT || "465", 10);
-    const smtpSecure = process.env.SMTP_SECURE
-      ? process.env.SMTP_SECURE === "true"
-      : smtpPort === 465;
+    const rawPort = parseInt(process.env.SMTP_PORT || "587", 10);
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const toEmail = process.env.CONTACT_TO_EMAIL || "info@ahi-tec.de";
@@ -70,16 +70,6 @@ export async function POST(req: Request) {
         { status: 503 }
       );
     }
-
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpSecure,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    });
 
     const receivedDate = new Date().toLocaleString("de-DE", {
       timeZone: "Europe/Berlin",
@@ -157,14 +147,58 @@ Nachricht:
 ${cleanMessage}
     `.trim();
 
-    await transporter.sendMail({
+    const mailOptions = {
       from: `"AHI-TEC Website" <${smtpUser}>`,
       to: toEmail,
       replyTo: cleanEmail,
       subject: `[ahi-tec.de] Neue Anfrage von ${cleanName}`,
       text: textContent,
       html: htmlContent,
-    });
+    };
+
+    const sendWithConfig = async (port: number, secure: boolean) => {
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port,
+        secure,
+        auth: {
+          user: smtpUser,
+          pass: smtpPass,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000,
+      });
+
+      return await transporter.sendMail(mailOptions);
+    };
+
+    const isPort465 = rawPort === 465;
+    const initialSecure = isPort465;
+
+    try {
+      await sendWithConfig(rawPort, initialSecure);
+    } catch (primaryErr: unknown) {
+      console.warn(
+        `[Contact API] Primary attempt failed on port ${rawPort} (secure: ${initialSecure}):`,
+        primaryErr
+      );
+
+      // If initial was 465 and failed, try port 587 (STARTTLS)
+      if (rawPort === 465) {
+        console.log("[Contact API] Attempting fallback on port 587 (STARTTLS)...");
+        await sendWithConfig(587, false);
+      } else if (rawPort === 587) {
+        // If initial was 587 and failed, try port 465 (SSL)
+        console.log("[Contact API] Attempting fallback on port 465 (SSL)...");
+        await sendWithConfig(465, true);
+      } else {
+        throw primaryErr;
+      }
+    }
 
     return NextResponse.json({
       success: true,
@@ -172,10 +206,33 @@ ${cleanMessage}
     });
   } catch (error: unknown) {
     console.error("[Contact API] Fehler beim E-Mail-Versand:", error);
+
+    let clientMessage = "Beim Versenden der E-Mail ist ein Fehler aufgetreten.";
+    if (error instanceof Error) {
+      const msg = error.message;
+      if (
+        msg.includes("535") ||
+        msg.includes("EAUTH") ||
+        msg.includes("BadCredentials") ||
+        msg.includes("Invalid login")
+      ) {
+        clientMessage =
+          "SMTP-Authentifizierung fehlgeschlagen: Bitte überprüfen Sie das E-Mail-Passwort und den Benutzernamen (info@ahi-tec.de) in Vercel.";
+      } else if (
+        msg.includes("ETIMEDOUT") ||
+        msg.includes("ECONNREFUSED") ||
+        msg.includes("ESOCKET")
+      ) {
+        clientMessage =
+          "Verbindungs-Timeout zum Mailserver (Port blockiert oder nicht erreichbar).";
+      } else {
+        clientMessage = `Fehler: ${msg}`;
+      }
+    }
+
     return NextResponse.json(
       {
-        error:
-          "Beim Versenden der E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns direkt per E-Mail.",
+        error: clientMessage,
       },
       { status: 500 }
     );
