@@ -266,7 +266,7 @@ export default function HomePage() {
                   Meinerzhagen – direkt an der BAB 45
                 </h2>
                 <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
-                  Unser Standort im Märkischen Kreis bietet kurze Wege in die
+                  Unser Standort in der Immecker Str. 5 im Märkischen Kreis (58540 Meinerzhagen) bietet kurze Wege in die
                   Industrieregionen Südwestfalens, des Ruhrgebiets und darüber hinaus.
                   Das erleichtert schnelle Anlieferungen, planbare Abholungen und
                   termingerechte Rückführungen Ihrer Werkstücke.
@@ -415,6 +415,10 @@ export default function HomePage() {
                     Hinweis: Sie können uns Ihre Anfrage auch direkt an{" "}
                     <a href="mailto:info@ahi-tec.de" className="underline text-foreground">
                       info@ahi-tec.de
+                    </a>{" "}
+                    oder telefonisch unter{" "}
+                    <a href="tel:+4923549429870" className="underline text-foreground">
+                      +49 2354 9429870
                     </a>{" "}
                     senden.
                   </p>
