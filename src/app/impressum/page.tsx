@@ -37,17 +37,12 @@ export default function ImpressumPage() {
               <p className="font-semibold text-base">AHI-TEC</p>
               <p className="text-muted-foreground">Industriedienstleistungen</p>
               <p className="text-muted-foreground">
-                [Straße und Hausnummer ergänzen]
+                Immecker Str. 5
                 <br />
                 58540 Meinerzhagen
                 <br />
                 Deutschland
               </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="font-semibold text-foreground">Vertreten durch:</p>
-              <p className="mt-1 text-muted-foreground">[Vor- und Nachname des Inhabers / Geschäftsführers]</p>
             </div>
           </div>
 
@@ -57,7 +52,12 @@ export default function ImpressumPage() {
             <div className="mt-4 space-y-2">
               <p>
                 <span className="font-semibold text-foreground">Telefon:</span>{" "}
-                <span className="text-muted-foreground">[Telefonnummer ergänzen – gesetzliche Pflichtangabe nach § 5 Abs. 1 Nr. 2 DDG]</span>
+                <a
+                  href="tel:+4923549429870"
+                  className="text-signal underline hover:opacity-85 font-medium"
+                >
+                  +49 2354 9429870
+                </a>
               </p>
               <p>
                 <span className="font-semibold text-foreground">E-Mail:</span>{" "}
@@ -82,38 +82,15 @@ export default function ImpressumPage() {
             </div>
           </div>
 
-          {/* Umsatzsteuer-ID & Register */}
-          <div className="border-b border-border pb-8">
-            <h2 className="text-xl font-bold text-foreground">
-              Umsatzsteuer-Identifikationsnummer & Register
-            </h2>
-            <div className="mt-4 space-y-3">
-              <div>
-                <p className="font-semibold text-foreground">
-                  Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
-                </p>
-                <p className="mt-1 text-muted-foreground">
-                  [USt-IdNr. eintragen, z. B. DE123456789 oder &quot;Wird auf Anfrage mitgeteilt / Nicht zutreffend&quot;]
-                </p>
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">Registereintrag:</p>
-                <p className="mt-1 text-muted-foreground">
-                  [Falls im Handelsregister eingetragen: Registergericht und Registernummer angeben, andernfalls: &quot;Nicht im Handelsregister eingetragen (Einzelunternehmen)&quot;]
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Redaktionell verantwortlich */}
           <div className="border-b border-border pb-8">
             <h2 className="text-xl font-bold text-foreground">
               Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
             </h2>
             <div className="mt-4 space-y-1">
-              <p className="text-muted-foreground">[Vor- und Nachname]</p>
-              <p className="text-muted-foreground">[Straße und Hausnummer]</p>
-              <p className="text-muted-foreground">58540 Meinerzhagen</p>
+              <p className="text-foreground font-medium">AHI-TEC Industriedienstleistungen</p>
+              <p className="text-muted-foreground">Immecker Str. 5</p>
+              <p className="text-muted-foreground">58540 Meinerzhagen, Deutschland</p>
             </div>
           </div>
 

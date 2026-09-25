@@ -103,11 +103,15 @@ export default function DatenschutzPage() {
                 </p>
                 <div className="mt-2 text-foreground font-medium">
                   <p>AHI-TEC Industriedienstleistungen</p>
-                  <p className="text-muted-foreground">[Straße und Hausnummer ergänzen]</p>
+                  <p className="text-muted-foreground">Immecker Str. 5</p>
                   <p className="text-muted-foreground">58540 Meinerzhagen</p>
                   <p className="text-muted-foreground">Deutschland</p>
                   <p className="mt-2 text-muted-foreground">
-                    Telefon: [Telefonnummer ergänzen]<br />
+                    Telefon:{" "}
+                    <a href="tel:+4923549429870" className="text-signal underline">
+                      +49 2354 9429870
+                    </a>
+                    <br />
                     E-Mail:{" "}
                     <a href="mailto:info@ahi-tec.de" className="text-signal underline">
                       info@ahi-tec.de

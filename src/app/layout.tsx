@@ -104,10 +104,12 @@ const jsonLd = {
   logo: `${siteUrl}/images/logo.png`,
   image: `${siteUrl}/images/hero-parts.jpg`,
   email: "info@ahi-tec.de",
+  telephone: "+4923549429870",
   priceRange: "€€",
   currenciesAccepted: "EUR",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Immecker Str. 5",
     addressLocality: "Meinerzhagen",
     postalCode: "58540",
     addressRegion: "Nordrhein-Westfalen",

@@ -327,8 +327,17 @@ export default function HomePage() {
                 </p>
                 <div className="mt-8 space-y-3 text-sm text-primary-foreground/80">
                   <p>
-                    <span className="font-semibold text-primary-foreground">Standort:</span>{" "}
-                    58540 Meinerzhagen
+                    <span className="font-semibold text-primary-foreground">Adresse:</span>{" "}
+                    Immecker Str. 5, 58540 Meinerzhagen
+                  </p>
+                  <p>
+                    <span className="font-semibold text-primary-foreground">Telefon:</span>{" "}
+                    <a
+                      href="tel:+4923549429870"
+                      className="underline hover:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-signal rounded"
+                    >
+                      +49 2354 9429870
+                    </a>
                   </p>
                   <p>
                     <span className="font-semibold text-primary-foreground">E-Mail:</span>{" "}

@@ -93,9 +93,15 @@ export function Footer() {
               Sortierung, Entgraten und CNC-Bearbeitung.
             </p>
           </div>
-          <div className="text-sm text-primary-foreground/70">
+          <div className="text-sm text-primary-foreground/70 space-y-1">
             <p className="font-semibold text-primary-foreground">AHI-TEC</p>
+            <p>Immecker Str. 5</p>
             <p>58540 Meinerzhagen</p>
+            <p className="pt-1">
+              <a href="tel:+4923549429870" className="hover:text-primary-foreground transition-colors">
+                Tel: +49 2354 9429870
+              </a>
+            </p>
           </div>
         </div>
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-primary-foreground/15 pt-6 text-sm text-primary-foreground/60 sm:flex-row sm:items-center">
