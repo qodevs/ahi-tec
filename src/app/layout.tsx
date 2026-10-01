@@ -105,6 +105,11 @@ const jsonLd = {
   image: `${siteUrl}/images/hero-parts.jpg`,
   email: "info@ahi-tec.de",
   telephone: "+4923549429870",
+  founder: {
+    "@type": "Person",
+    name: "Oguzhan Kocyigit",
+    jobTitle: "Inhaber",
+  },
   priceRange: "€€",
   currenciesAccepted: "EUR",
   address: {

@@ -36,6 +36,7 @@ export default function ImpressumPage() {
             <div className="mt-4 space-y-1 text-foreground">
               <p className="font-semibold text-base">AHI-TEC</p>
               <p className="text-muted-foreground">Industriedienstleistungen</p>
+              <p className="text-foreground font-medium">Inhaber: Oguzhan Kocyigit</p>
               <p className="text-muted-foreground">
                 Immecker Str. 5
                 <br />
@@ -43,6 +44,14 @@ export default function ImpressumPage() {
                 <br />
                 Deutschland
               </p>
+            </div>
+          </div>
+
+          {/* Vertreten durch */}
+          <div className="border-b border-border pb-8">
+            <h2 className="text-xl font-bold text-foreground">Vertreten durch</h2>
+            <div className="mt-4 space-y-1 text-foreground">
+              <p>Oguzhan Kocyigit (Inhaber)</p>
             </div>
           </div>
 
@@ -88,7 +97,8 @@ export default function ImpressumPage() {
               Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
             </h2>
             <div className="mt-4 space-y-1">
-              <p className="text-foreground font-medium">AHI-TEC Industriedienstleistungen</p>
+              <p className="text-foreground font-medium">Oguzhan Kocyigit</p>
+              <p className="text-muted-foreground">AHI-TEC Industriedienstleistungen</p>
               <p className="text-muted-foreground">Immecker Str. 5</p>
               <p className="text-muted-foreground">58540 Meinerzhagen, Deutschland</p>
             </div>
