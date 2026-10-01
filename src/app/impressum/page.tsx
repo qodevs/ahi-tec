@@ -35,8 +35,8 @@ export default function ImpressumPage() {
             </h2>
             <div className="mt-4 space-y-1 text-foreground">
               <p className="font-semibold text-base">AHI-TEC</p>
-              <p className="text-muted-foreground">Industriedienstleistungen</p>
               <p className="text-foreground font-medium">Inhaber: Oguzhan Kocyigit</p>
+              <p className="text-muted-foreground">Industriedienstleistungen</p>
               <p className="text-muted-foreground">
                 Immecker Str. 5
                 <br />
