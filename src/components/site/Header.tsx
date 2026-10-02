@@ -26,8 +26,8 @@ export function Logo({
       <Image
         src="/images/logo.png"
         alt="AHI-TEC Industriedienstleistungen"
-        width={300}
-        height={104}
+        width={360}
+        height={125}
         priority
         className={className}
       />
@@ -51,8 +51,8 @@ export function Header() {
         scrolled ? "shadow-md" : "shadow-xs"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Logo />
+      <div className="mx-auto flex h-20 sm:h-24 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Logo className="h-14 sm:h-16 md:h-[72px] w-auto object-contain" />
 
         <nav className="hidden items-center gap-6 lg:gap-7 md:flex" aria-label="Hauptnavigation">
           {NAV.map((item) => (
